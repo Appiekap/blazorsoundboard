@@ -1,7 +1,39 @@
 @page "/"
 
+@using Data
+@using Data.Interfaces
+@inject IDataService DataService
+
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
+
+@foreach (var item in Numbers)
+{
+    <h1>@item</h1>
+}
+
+<h1>
+    <i class="oi oi-home" aria-hidden="true"></i>
+    The Soundboard
+</h1>
+<div class="container-fluid">
+    <div class="row equal">
+        @foreach (var tileInfo in DataService.GetTileInfos())
+            {
+                <Tile
+                    Name="@tileInfo.Name"
+                    ImageUrl="@tileInfo.ImageUrl"
+                    AudioUrl="@tileInfo.AudioUrl">
+                    @tileInfo.Description
+                </Tile>
+            }
+        </div>
+</div>
+
+@code 
+{
+    private int[] Numbers { get; set; } = { 1 ,2 ,3 };
+}
