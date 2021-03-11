@@ -350,3 +350,5 @@ MigrationBackup/
 .ionide/
 BlazorSoundboard/.vscode/launch.json
 BlazorSoundboard/.vscode/tasks.json
+.vscode/launch.json
+.vscode/tasks.json
